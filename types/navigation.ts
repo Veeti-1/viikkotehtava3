@@ -1,4 +1,4 @@
 export type RootStackParamList = {
 Home: undefined;
-secondScreen: { message: string };
+secondScreen: undefined;
 };

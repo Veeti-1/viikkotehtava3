@@ -1,22 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-//import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator} from '@react-navigation/native-stack';
 import { PaperProvider } from 'react-native-paper';
 import HomeScreen from './screens/homeScreen';
 import SecondScreen from './screens/secondScreen';
-import { RootStackParamList } from './types/navigation';
 import NavigationBar from '../viikkotehtava3/components/navigationBar'
-const Stack = createNativeStackNavigator<RootStackParamList>();
+import 'react-native-gesture-handler';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
 export default function App() {
  
   return (
     
    <PaperProvider>
-    <NavigationBar/>
    <NavigationContainer>
     
-    <Stack.Navigator initialRouteName = 'Home'>
+    <Stack.Navigator initialRouteName = 'Home'  screenOptions={{
+            header:(props) => <NavigationBar {...props} />,
+          }}
+        >
     <Stack.Screen name='Home' component={HomeScreen}></Stack.Screen>
     
     <Stack.Screen name='secondScreen' component={SecondScreen}></Stack.Screen>
