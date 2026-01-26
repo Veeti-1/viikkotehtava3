@@ -4,6 +4,8 @@ import { Appbar, Props } from 'react-native-paper';
 import type { StackHeaderProps } from '@react-navigation/stack';
 import { getHeaderTitle } from '@react-navigation/elements';
 import { Ionicons } from '@expo/vector-icons';
+import { View, Text, StyleSheet } from 'react-native';
+
 export default function NavigationBar({navigation,route,options,back}:StackHeaderProps){
   
 
@@ -12,17 +14,18 @@ export default function NavigationBar({navigation,route,options,back}:StackHeade
 
 return (
         <Appbar.Header>
-        <Button mode='contained' onPress={()=>navigation.navigate('secondScreen')}>
-           {title}
-           <Ionicons
-            name='arrow-forward'
-           size={24}
-            color='#fff'
-           />
-        </Button>
-        <Appbar.BackAction onPress={navigation.goBack}/>
+        <Appbar.Content style={{marginRight:30}} title={title} />
+        {back ? <Appbar.BackAction style={{marginLeft:-50}} onPress={navigation.goBack}/> 
+        : 
+         <Appbar.Action
 
-        <Appbar.Content title={title} />
+         icon="arrow-right"
+         onPress={()=>navigation.navigate("secondScreen")}
+         />
+        
+        
+                }
+
         </Appbar.Header>
 );
 };
